@@ -119,28 +119,11 @@ def KGML2Graph(xmlfile, filter_by = ()):
     # parse and add relations
     for rel in tree.iter('relation'):
         e1 = rel.get('entry1')
-        e2 = rel.get('entry2')        
-        pathway.add_edge(e1, e2)        
-        
-        #parsing subtype
-        compound_subtypes = (
-            (subtype.get('value'),subtype.get('name'))
-            for subtype in rel
-            if subtype.tag == 'subtype' and subtype.get('name') in ("compound", "hidden compound")
-        )
-        compound = next(compound_subtypes, None)[0]
-        if compound is None:
-            pass
-        else:
-            pathway.add_edge(e1, compound)
-            pathway.add_edge(compound, e2)
-            for compound in compound_subtypes:
-                pathway.add_edge(e1, compound)
-                pathway.add_edge(compound, e2)
-
-        pathway.relations[e1+'_'+e2]
-        
-        pathway.relations["subtype"] = compound_subtypes
+        e2 = rel.get('entry2')
+#        pathway.add_edge(nodes[e1][1], nodes[e2][1])
+        pathway.add_edge(e1, e2)
+        pathway.relations[e1+'_'+e2] = rel
+   
 
     # Add reactions to pathway object
     for reaction in tree.iter('reaction'):

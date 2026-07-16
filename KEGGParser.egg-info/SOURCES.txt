@@ -1,0 +1,13 @@
+README.md
+setup.cfg
+setup.py
+KEGGParser.egg-info/PKG-INFO
+KEGGParser.egg-info/SOURCES.txt
+KEGGParser.egg-info/dependency_links.txt
+KEGGParser.egg-info/requires.txt
+KEGGParser.egg-info/top_level.txt
+keggparser/KeggPathway.py
+keggparser/__init__.py
+keggparser/parse_KGML.py
+tests/testIO.py
+tests/test_drafts.py
