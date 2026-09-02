@@ -11,8 +11,6 @@ import xml.etree.cElementTree as ET
 import networkx
 import logging
 import pylab
-import itertools
-
 #logging.basicConfig(level=logging.DEBUG)
 
 from keggparser.KeggPathway import KeggPathway#, KeggNode
@@ -38,11 +36,6 @@ def parse_edges_recursively(substrates: list, products: list):
     for s in substrates:
         for p in products:
             edges.append((s, p))
-
-    #also create edges between substrates and products
-    #inter_substrates_edges = list(itertools.combinations(substrates, 2))
-    #inter_products_edges = list(itertools.combinations(products, 2))
-
     return edges
 
 def KGML2Graph(xmlfile, filter_by = ()):
